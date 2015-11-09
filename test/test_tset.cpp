@@ -295,3 +295,18 @@ TEST(TSet, check_negation_operator)
 
   EXPECT_EQ(expSet, set1);
 }
+
+TEST(TSet, addition_element)
+{
+	const int size = 3;
+	int elem = 2;
+	TSet set1(size), set2(size + 1), resalt(size + 1);
+	//set1 = {1,2}
+	set1.InsElem(1);
+	set1.InsElem(2);
+	set2 = set1 + elem;
+	resalt=set1;
+	resalt.InsElem(elem);
+	EXPECT_EQ(resalt, set2);
+}
+

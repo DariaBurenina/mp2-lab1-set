@@ -292,3 +292,14 @@ TEST(TBitField, bitfields_with_different_bits_are_not_equal)
 
   EXPECT_NE(bf1, bf2);
 }
+
+TEST(TBitField, negation_of_bitfields_of_big_size)
+{
+	const int size = 100;
+	TBitField bf1(size), bf2(size), bf3(size);
+	for (int i = 0; i < size; i ++)
+		bf1.SetBit(i/4);
+	bf2 = ~bf1;
+	bf3 = bf1 & bf2;
+	EXPECT_EQ(NULL , bf1 == bf2);
+}
